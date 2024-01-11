@@ -9,3 +9,7 @@ data class DetailPelapor(
     val berat : Int = 0,
     val total_harga: Int = 0
 )
+data class UIStatePelapor(
+    val detailPelapor: DetailPelapor= DetailPelapor(),
+    val isEntryValid: Boolean = false
+)
