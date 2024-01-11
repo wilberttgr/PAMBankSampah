@@ -1,5 +1,7 @@
 package com.example.pambanksampah.model
 
+import com.example.pambanksampah.data.Pelapor
+
 data class DetailPelapor(
     val id : Int = 0,
     val nama : String = "",
@@ -12,4 +14,13 @@ data class DetailPelapor(
 data class UIStatePelapor(
     val detailPelapor: DetailPelapor= DetailPelapor(),
     val isEntryValid: Boolean = false
+)
+fun DetailPelapor.toPelapor(): Pelapor = Pelapor(
+    id = id,
+    nama = nama,
+    tangal_penjemputan = tangal_penjemputan,
+    alamat = alamat,
+    catatan = catatan,
+    berat = berat,
+    total_harga = total_harga
 )
