@@ -1,6 +1,39 @@
 package com.example.pambanksampah.model
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
 import com.example.pambanksampah.data.Pelapor
+import com.example.pambanksampah.repositori.Repositori
+
+class InputViewModel(private val repositori: Repositori) : ViewModel() {
+
+    /*
+       *Berisi status Siswa saat ini
+        */
+    var uiStatePelapor by mutableStateOf(UIStatePelapor())
+        private set
+
+    /* Fungsi untuk memvalidasi input */
+    private fun validasiInput(uiState: DetailPelapor = uiStatePelapor.detailPelapor): Boolean {
+        return with(uiState) {
+            nama.isNotBlank() && alamat.isNotBlank() && tangal_penjemputan.isNotBlank()&& catatan.isNotBlank()
+        }
+    }
+
+    fun updateUiState(detailPelapor: DetailPelapor) {
+        uiStatePelapor =
+            UIStatePelapor(detailPelapor = detailPelapor, isEntryValid = validasiInput(detailPelapor))
+    }
+
+    /* Fungsi untuk menyimpan data yang di-entry */
+    suspend fun savePelapor() {
+        if (validasiInput()) {
+            repositori.insertpelapor(uiStatePelapor.detailPelapor.toPelapor())
+        }
+    }
+}
 
 data class DetailPelapor(
     val id : Int = 0,
