@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,7 +23,39 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.pambanksampah.R
 import com.example.pambanksampah.model.DetailPelapor
+import com.example.pambanksampah.model.UIStatePelapor
 
+
+@Composable
+fun EntryPelaporBody(
+    uiStatePelapor: UIStatePelapor,
+    onPelaporValueChange: (DetailPelapor) -> Unit,
+    onSaveClick: () -> Unit,
+    onBack : () -> Unit,
+    modifier: Modifier
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(22.dp),
+        modifier = modifier.padding(0.dp)
+    ) {
+        FormInput(
+            onBackClick= onBack,
+            detailPelapor = uiStatePelapor.detailPelapor,
+            onValueChange = onPelaporValueChange,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Button(
+            onClick = onSaveClick,
+            enabled = uiStatePelapor.isEntryValid,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp),
+            colors = ButtonDefaults.buttonColors(Color(0xFF4CAF50))
+        ) {
+            Text(text = "Jemput Sekarang")
+        }
+    }
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInput(
