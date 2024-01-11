@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BankSampah</string>
+    <string name="medication_name">Nama Pengguna\n</string>
+    <string name="tgl_penjemputan">Tangal Penjemputan\n</string>
+    <string name="alamat">Alamat\n</string>
+    <string name="catatan">Catatan Tambahan\n</string>
+    <string name="jemput_sampah">Jemput Sampah</string>
+    <string name="weight">Berat (kg)\n</string>
+    <string name="total_price">Total Harga (kg)\n</string>
+    <string name="waste_category">Kategori Sampah</string>
+    <string name="attention">Perhatian</string>
+    <string name="delete">Hapus</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Ya</string>
+    <string name="detail_pelapor">Detail Pelapor</string>
+    <string name="edit_siswa">Edit Pelapor</string>
+    <string name="form_pelapor">Lapor Sampah</string>
+    <string name="history">History\n</string>
+    <string name="jenis">Jenis</string>
+    <string name="edit_lapor">"Edit "</string>
+
+
+</resources>
