@@ -17,17 +17,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.pambanksampah.ui.theme.halaman.AddMedicationScreen
 import com.example.pambanksampah.ui.theme.halaman.BankSampahApp
 import com.example.pambanksampah.ui.theme.halaman.DestinasiForm
 import com.example.pambanksampah.ui.theme.halaman.DestinasiHome
 import com.example.pambanksampah.ui.theme.halaman.DestinasiJenis
 import com.example.pambanksampah.ui.theme.halaman.DestinasiLogin
+import com.example.pambanksampah.ui.theme.halaman.DetailsDestination
+import com.example.pambanksampah.ui.theme.halaman.DetailsScreen
 import com.example.pambanksampah.ui.theme.halaman.EmptyScreen
 import com.example.pambanksampah.ui.theme.halaman.GarbageInformation
+import com.example.pambanksampah.ui.theme.halaman.ItemEditDestination
+import com.example.pambanksampah.ui.theme.halaman.ItemEditScreen
 
 @Composable
 fun SampahApp(navController: NavHostController = rememberNavController()) {
@@ -90,6 +96,24 @@ fun HostNavigasi(
         }
         composable(DestinasiJenis.route) {
             GarbageInformation(navigateBack = { navController.navigate(DestinasiHome.route) })
+        }
+        composable(
+            DetailsDestination.routeWithArgs,
+            arguments = listOf(navArgument(DetailsDestination.pelaporIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+            DetailsScreen(navigateToEditItem = {navController.navigate("${ItemEditDestination.route}/$it")}, navigateBack = { navController.popBackStack()})
+        }
+
+        composable(
+            ItemEditDestination.routeWithArgs,
+            arguments = listOf(navArgument(ItemEditDestination.itemIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+            ItemEditScreen(
+                navigateBack = { navController.popBackStack() })
         }
     }
 }
