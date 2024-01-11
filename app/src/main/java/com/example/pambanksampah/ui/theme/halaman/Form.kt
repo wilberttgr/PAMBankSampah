@@ -24,8 +24,12 @@ import androidx.compose.ui.unit.dp
 import com.example.pambanksampah.R
 import com.example.pambanksampah.model.DetailPelapor
 import com.example.pambanksampah.model.UIStatePelapor
+import com.example.pambanksampah.navigasi.DestinasiNavigasi
 
-
+object DestinasiForm: DestinasiNavigasi {
+    override val route = "form"
+    override val titleRes = R.string.form_pelapor
+}
 @Composable
 fun EntryPelaporBody(
     uiStatePelapor: UIStatePelapor,
