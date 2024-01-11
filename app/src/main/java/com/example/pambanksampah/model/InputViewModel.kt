@@ -57,3 +57,12 @@ fun DetailPelapor.toPelapor(): Pelapor = Pelapor(
     berat = berat,
     total_harga = total_harga
 )
+fun Pelapor.toDetailPelapor(): DetailPelapor= DetailPelapor(
+    id = id,
+    nama = nama,
+    tangal_penjemputan = tangal_penjemputan,
+    alamat = alamat,
+    catatan = catatan,
+    berat = berat,
+    total_harga = total_harga
+)
