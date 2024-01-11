@@ -16,6 +16,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.pambanksampah.ui.theme.halaman.AddMedicationScreen
+import com.example.pambanksampah.ui.theme.halaman.BankSampahApp
+import com.example.pambanksampah.ui.theme.halaman.DestinasiForm
+import com.example.pambanksampah.ui.theme.halaman.DestinasiHome
+import com.example.pambanksampah.ui.theme.halaman.DestinasiJenis
+import com.example.pambanksampah.ui.theme.halaman.DestinasiLogin
+import com.example.pambanksampah.ui.theme.halaman.EmptyScreen
+import com.example.pambanksampah.ui.theme.halaman.GarbageInformation
+
+@Composable
+fun SampahApp(navController: NavHostController = rememberNavController()) {
+    HostNavigasi(navController = navController)
+
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,4 +65,31 @@ fun SampahTopAppBar(
             }
         }
     )
+}
+
+@Composable
+fun HostNavigasi(
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiLogin.route,
+        modifier = Modifier
+    )
+    {
+        composable(DestinasiLogin.route) {
+            EmptyScreen(navController = navController,
+                onNextButtonClicked = { navController.navigate(DestinasiHome.route) })
+        }
+        composable(DestinasiHome.route) {
+            BankSampahApp(navController = navController)
+        }
+        composable(DestinasiForm.route) {
+            AddMedicationScreen(navigateBack = { navController.navigate(DestinasiHome.route) })
+        }
+        composable(DestinasiJenis.route) {
+            GarbageInformation(navigateBack = { navController.navigate(DestinasiHome.route) })
+        }
+    }
 }
