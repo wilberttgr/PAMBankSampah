@@ -57,6 +57,10 @@ fun DetailPelapor.toPelapor(): Pelapor = Pelapor(
     berat = berat,
     total_harga = total_harga
 )
+fun Pelapor.toUiStatePelapor(isEntryValid: Boolean = false): UIStatePelapor = UIStatePelapor(
+    detailPelapor = this.toDetailPelapor(),
+    isEntryValid = isEntryValid
+)
 fun Pelapor.toDetailPelapor(): DetailPelapor= DetailPelapor(
     id = id,
     nama = nama,
