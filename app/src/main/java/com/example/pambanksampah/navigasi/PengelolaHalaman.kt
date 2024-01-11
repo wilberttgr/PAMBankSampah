@@ -25,6 +25,7 @@ import androidx.navigation.navArgument
 import com.example.pambanksampah.ui.theme.halaman.AddMedicationScreen
 import com.example.pambanksampah.ui.theme.halaman.BankSampahApp
 import com.example.pambanksampah.ui.theme.halaman.DestinasiForm
+import com.example.pambanksampah.ui.theme.halaman.DestinasiHistory
 import com.example.pambanksampah.ui.theme.halaman.DestinasiHome
 import com.example.pambanksampah.ui.theme.halaman.DestinasiJenis
 import com.example.pambanksampah.ui.theme.halaman.DestinasiLogin
@@ -32,6 +33,7 @@ import com.example.pambanksampah.ui.theme.halaman.DetailsDestination
 import com.example.pambanksampah.ui.theme.halaman.DetailsScreen
 import com.example.pambanksampah.ui.theme.halaman.EmptyScreen
 import com.example.pambanksampah.ui.theme.halaman.GarbageInformation
+import com.example.pambanksampah.ui.theme.halaman.HistoryScreen
 import com.example.pambanksampah.ui.theme.halaman.ItemEditDestination
 import com.example.pambanksampah.ui.theme.halaman.ItemEditScreen
 
@@ -96,6 +98,9 @@ fun HostNavigasi(
         }
         composable(DestinasiJenis.route) {
             GarbageInformation(navigateBack = { navController.navigate(DestinasiHome.route) })
+        }
+        composable(DestinasiHistory.route) {
+            HistoryScreen(navigateBack = { navController.navigate(DestinasiHome.route) }, onDetailClick = {navController.navigate("${DetailsDestination.route}/$it")})
         }
         composable(
             DetailsDestination.routeWithArgs,

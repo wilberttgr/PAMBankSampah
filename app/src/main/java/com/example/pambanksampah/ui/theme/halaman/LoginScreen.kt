@@ -32,7 +32,7 @@ import com.example.pambanksampah.R
 import com.example.pambanksampah.navigasi.DestinasiNavigasi
 
 object DestinasiLogin : DestinasiNavigasi {
-    override val route = "jenis"
+    override val route = "login"
     override val titleRes = R.string.app_name
 }
 @Composable

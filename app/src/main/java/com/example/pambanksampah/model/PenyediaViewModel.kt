@@ -14,7 +14,18 @@ object PenyediaViewModel {
         initializer {
             InputViewModel(aplikasiSampah().container.repositori)
         }
-
+        initializer {
+            EditViewModel(
+                createSavedStateHandle(),
+                aplikasiSampah().container.repositori,
+            )
+        }
+        initializer {
+            DetailsViewModel(
+                createSavedStateHandle(),
+                aplikasiSampah().container.repositori,
+            )
+        }
     }
 
     fun CreationExtras.aplikasiSampah(): AplikasiBankSampah =
